@@ -44,7 +44,7 @@ public class StandaloneCalibrationTool implements CompletedListener {
     private HostDataSource source;
     private final DatabaseConnector database = new DefaultDatabaseConnector();
     private CalibrationRunManager runManager;
-    private static final String DEFAULT_DATA_SOURCE_PACKAGE = "eu.tango.energymodeller.queryinterface.datasourceclient";
+    private static final String DEFAULT_DATA_SOURCE_PACKAGE = "eu.tango.energymodeller.datasourceclient";
 
     /**
      * Creates a calibration tool for the ASECTiC energy modeller
@@ -74,11 +74,10 @@ public class StandaloneCalibrationTool implements CompletedListener {
      * This performs the calibration of a host.
      *
      * @param args The first argument should be the host name after this there
-     * are several optional arguments can be passed namely: 
-     * halt-on-calibrated which prevents a host from been re-calibrated. 
-     * benchmark-only which prevents calibration from running. and
-     * use-watts-up-meter which means a watts up meter is used locally for 
-     * measurements.
+     * are several optional arguments can be passed namely: halt-on-calibrated
+     * which prevents a host from been re-calibrated. benchmark-only which
+     * prevents calibration from running. and use-watts-up-meter which means a
+     * watts up meter is used locally for measurements.
      *
      */
     public static void main(String[] args) {
@@ -89,6 +88,10 @@ public class StandaloneCalibrationTool implements CompletedListener {
                 ResourceExtractor.extractSigar();
                 instance = new StandaloneCalibrationTool(args[0],
                         DEFAULT_DATA_SOURCE_PACKAGE + ".WattsUpMeterDataSourceAdaptor");
+            }
+            if (strArgs.contains("use-slurm")) {
+                instance = new StandaloneCalibrationTool(args[0],
+                        DEFAULT_DATA_SOURCE_PACKAGE + ".SlurmDataSourceAdaptor");
             } else {
                 instance = new StandaloneCalibrationTool(args[0]);
             }
