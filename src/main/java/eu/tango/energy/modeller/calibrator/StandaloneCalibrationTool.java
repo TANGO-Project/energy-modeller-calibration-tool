@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package eu.ascetic.iaas.energy.modeller.standalone.calibration.tool;
+package eu.tango.energy.modeller.calibrator;
 
 import eu.ascetic.ioutils.execution.CompletedListener;
 import eu.tango.energymodeller.datasourceclient.HostDataSource;
