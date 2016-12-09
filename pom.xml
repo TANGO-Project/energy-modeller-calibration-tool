@@ -103,9 +103,9 @@
             <version>-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.github.Tango-Project</groupId>
+            <groupId>eu.tango</groupId>
             <artifactId>energy-modeller</artifactId>
-            <version>-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>eu.ascetic.utils</groupId>
