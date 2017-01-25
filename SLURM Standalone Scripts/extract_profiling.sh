@@ -5,5 +5,6 @@ if [ -z $1 ]; then
    exit
 fi
 
+sh5util -j $1 
 sh5util -j $1 -E -l Node:Timeseries -s Energy -o extract_power_time_series.csv
 sh5util -j $1 -E -l Node:Timeseries -s Tasks -o extract_util_time_series.csv

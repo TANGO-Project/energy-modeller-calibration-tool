@@ -4,7 +4,7 @@
 #SBATCH --output=RKBenchTest1.txt
 #
 #SBATCH --ntasks=1
-#SBATCH --time=15:00
+#SBATCH --time=22:00
 #SBATCH --mem-per-cpu=100
 #SBATCH  -N 1
 #SBATCH --profile=Energy,Task 
