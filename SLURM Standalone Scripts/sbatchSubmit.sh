@@ -13,6 +13,21 @@
 
 CORES=16
 
+echo "Running stress test with 1% CPU Usage"
+stress -c $CORES --backoff 1000000 &
+PID=$!
+sleep 0.5
+CPIDS=$(pidof -o $PID stress)
+echo "Stress PIDs are: $CPIDS"
+CORE=0
+for CPID in $CPIDS; do
+  cpulimit -p $CPID -l 1 &
+  taskset -cp $CORE $CPID
+  let "CORE++"
+done
+sleep 120;
+killall -s KILL stress
+
 INCREMENT=10
 PERCENTAGE=10
 while [ $PERCENTAGE -le 100 ]; do
