@@ -10,4 +10,4 @@ else
 TIME=$1
 fi
 
-awk -v time=$TIME 'FS="," {print (NR>1 && $7>0 && $9>=time && $9<120.5-time ) ? "INSERT INTO host_calibration_data ( host_id, cpu, memory, power ) Values ("substr($1,3)","$7/100",0,"$8");": ""  }' calibration_data.csv | awk 'NF' > calibration_data.sql
+awk -v time=$TIME 'FS="," {print (NR>1 && $7>0 && $10>=time && $10<120.5-time ) ? "INSERT INTO host_calibration_data ( host_id, cpu, memory, power ) Values ("substr($1,3)","$7/100",0,"$8");": ""  }' calibration_data.csv | awk 'NF' > calibration_data.sql
