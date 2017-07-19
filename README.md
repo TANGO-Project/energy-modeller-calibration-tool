@@ -12,7 +12,7 @@ The Calibrator performs the initial experimentation that allows the energy model
 
 ## Installation Guide
 
-This guide it is divided into two different guides, one specific to compilation of the Calibrator and the second on how to run and configure the Calibrator.
+This guide it is divided into two parts, one specific to compilation of the Calibrator and the second on how to run and configure the Calibrator.
 
 ### Compilation
 
@@ -33,22 +33,26 @@ The Energy Modeller's primary two prerequisites are:
 #### Sonar Cloud reports:
 The Sonar Cloud reports for this project are available at: https://sonarcloud.io/dashboard?id=eu.tango%3Aenergy-modeller-standalone-calibration-tool
 
-### Installation for running the service
-
-In this case, we are going to detail how to perform a calibration run.
-
-#### Configuring the service
-
-TODO
-
 ## Usage Guide
 
-TODO
+Its usage is as follows: 
+
+java –jar energy-modeller-standalone-calibration-tool-0.0.1-SNAPSHOT.jar [hostname] [halt-on-calibrated] [benchmark-only] [no-benchmark] [use-watts-up-meter]
+
+[hostname]: This is an non-optional argument that states which host to emulate the Watt meter for. If no hostname is specified the tool will work for all calibrated hosts.
+
+[halt-on-calibrated]: The halt-on-calibrated flag will prevent calibration in cases where the data has already been gathered.
+
+[benchmark-only]: The benchmark-only flag skips the calibration run and performs a benchmark run only.
+
+[no-benchmark]: The no-benchmark flag skips the benchmarking.
+
+[use-watts-up-meter]: The use-watts-up-meter flag can be used so that Zabbix is not used for calibration but local measurements are performed instead. This requires a Watts Up Meter.
 
 ## Relation to other TANGO components
 
 The energy modeller calibrator works with the following components:
 
 * **Energy Modeller** - The calibrator provides the initial data needed to create models regarding power and energy consumption.
-* **Device Supervisor** - The SAM can directly interface with the device supervisor as a means of using it as both a datasource for monitoring the environment and for invoking adaptation.
-* **Monitoring Infrastructure** - The SAM can interface with the monitoring infrastructure as a means of using it as a datasource for monitoring the environment..
+* **Device Supervisor** - The calibrator can directly interface with the device supervisor as a means of using it as a datasource for monitoring the environment.
+* **Monitoring Infrastructure** - The calibrator can interface with the monitoring infrastructure as a means of using it as a datasource for monitoring the environment.
