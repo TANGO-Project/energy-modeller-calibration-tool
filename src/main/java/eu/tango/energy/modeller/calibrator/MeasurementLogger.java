@@ -49,17 +49,13 @@ public class MeasurementLogger extends GenericLogger<Measurement> {
             if (!store.getResultsFile().exists() || metricNames.isEmpty()) {
                 /**
                  * Write out the header if the file does not exist or is if the
-                 * file is been appended to for the first time. i.e. the headers
+                 * file is being appended to for the first time. i.e. the headers
                  * may be in a different order.
                  */
-                for (Measurement measurement : measurements) {
+                if (!measurements.isEmpty()) {
+                    Measurement measurement = (Measurement) (measurements.toArray())[0];
                     metricNames.addAll(measurement.getMetricNameList());
                     writeHeader(store);
-                    /**
-                     * This gets the first item out of the measurements list, so
-                     * the header can be written.
-                     */
-                    break;  
                 }
 
             }
