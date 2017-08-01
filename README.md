@@ -25,6 +25,12 @@ The Energy Modeller's primary two prerequisites are:
 
 #### Installation and configuration procedure
 
+1. Generate the jar energy modeller standalone calibration tool jar using the command: mvn clean package (executed  in the standalone calibration tool directory)
+2. Install the energy-modeller-standalone-calibration-tool on each host that is to be calibrated.
+
+A configuration file called “Apps.csv” can now be specified. This file providing details about the application/s used to induce the training load for the host.
+
+An example is provided within the source code and the headers as part of a default file are written out to disk if the apps.csv file is not found. A test application has also been provided under utils\ascetic-load-generator-app. This file specifies the following: The start time the application should run, the standard out and error files to redirect output to, the applications working directory and if output should also be redirected to the screen or not.
 
 #### Build status from Travis-CI
 
