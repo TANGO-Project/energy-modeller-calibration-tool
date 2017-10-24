@@ -1,0 +1,244 @@
+Running stress test with 1% CPU Usage
+stress: info: [46848] dispatching hogs: 16 cpu, 0 io, 0 vm, 0 hdd
+Stress PIDs are: 46865 46864 46863 46862 46861 46860 46859 46858 46857 46856 46855 46854 46853 46852 46851 46850
+pid 46865's current affinity list: 0-15
+pid 46865's new affinity list: 0
+pid 46864's current affinity list: 0-15
+pid 46864's new affinity list: 1
+pid 46863's current affinity list: 0-15
+pid 46863's new affinity list: 2
+pid 46862's current affinity list: 0-15
+pid 46862's new affinity list: 3
+pid 46861's current affinity list: 0-15
+pid 46861's new affinity list: 4
+pid 46860's current affinity list: 0-15
+pid 46860's new affinity list: 5
+pid 46859's current affinity list: 0-15
+pid 46859's new affinity list: 6
+pid 46858's current affinity list: 0-15
+pid 46858's new affinity list: 7
+pid 46857's current affinity list: 0-15
+pid 46857's new affinity list: 8
+pid 46856's current affinity list: 0-15
+pid 46856's new affinity list: 9
+pid 46855's current affinity list: 0-15
+pid 46855's new affinity list: 10
+pid 46854's current affinity list: 0-15
+pid 46854's new affinity list: 11
+pid 46853's current affinity list: 0-15
+pid 46853's new affinity list: 12
+pid 46852's current affinity list: 0-15
+pid 46852's new affinity list: 13
+pid 46851's current affinity list: 0-15
+pid 46851's new affinity list: 14
+pid 46850's current affinity list: 0-15
+pid 46850's new affinity list: 15
+/tmp/slurm-ns51/job03465/slurm_script: line 31: 46848 Killed                  stress -c $CORES --backoff 1000000
+Running stress test with 10% CPU Usage
+Process 46856 found
+stress: info: [46975] dispatching hogs: 16 cpu, 0 io, 0 vm, 0 hdd
+Process 46855 found
+Process 46852 found
+Process 46851 found
+Process 46854 found
+Process 46850 found
+Process 46859 found
+Process 46853 found
+Process 46861 found
+Process 46857 found
+Process 46865 found
+Process 46864 found
+Process 46863 found
+Process 46860 found
+Process 46858 found
+Process 46862 found
+Stress PIDs are: 46992 46991 46990 46989 46988 46987 46986 46985 46984 46983 46982 46981 46980 46979 46978 46977
+pid 46992's current affinity list: 0-15
+pid 46992's new affinity list: 0
+pid 46991's current affinity list: 0-15
+pid 46991's new affinity list: 1
+pid 46990's current affinity list: 0-15
+pid 46990's new affinity list: 2
+pid 46989's current affinity list: 0-15
+pid 46989's new affinity list: 3
+pid 46988's current affinity list: 0-15
+pid 46988's new affinity list: 4
+pid 46987's current affinity list: 0-15
+pid 46987's new affinity list: 5
+pid 46986's current affinity list: 0-15
+pid 46986's new affinity list: 6
+pid 46985's current affinity list: 0-15
+pid 46985's new affinity list: 7
+pid 46984's current affinity list: 0-15
+pid 46984's new affinity list: 8
+pid 46983's current affinity list: 0-15
+pid 46983's new affinity list: 9
+pid 46982's current affinity list: 0-15
+pid 46982's new affinity list: 10
+pid 46981's current affinity list: 0-15
+pid 46981's new affinity list: 11
+pid 46980's current affinity list: 0-15
+pid 46980's new affinity list: 12
+pid 46979's current affinity list: 0-15
+pid 46979's new affinity list: 13
+pid 46978's current affinity list: 0-15
+pid 46978's new affinity list: 14
+pid 46977's current affinity list: 0-15
+pid 46977's new affinity list: 15
+/tmp/slurm-ns51/job03465/slurm_script: line 52: 46975 Killed                  stress -c $CORES --backoff 1000000
+Running stress test with 20% CPU Usage
+stress: info: [47103] dispatching hogs: 16 cpu, 0 io, 0 vm, 0 hdd
+Process 46977 found
+Process 46986 found
+Process 46989 found
+Process 46987 found
+Process 46983 found
+Process 46982 found
+Process 46981 found
+Process 46992 found
+Process 46980 found
+Process 46988 found
+Process 46985 found
+Process 46990 found
+Process 46984 found
+Process 46979 found
+Process 46978 found
+Process 46991 found
+Stress PIDs are: 47120 47119 47118 47117 47116 47115 47114 47113 47112 47111 47110 47109 47108 47107 47106 47105
+pid 47120's current affinity list: 0-15
+pid 47120's new affinity list: 0
+pid 47119's current affinity list: 0-15
+pid 47119's new affinity list: 1
+pid 47118's current affinity list: 0-15
+pid 47118's new affinity list: 2
+pid 47117's current affinity list: 0-15
+pid 47117's new affinity list: 3
+pid 47116's current affinity list: 0-15
+pid 47116's new affinity list: 4
+pid 47115's current affinity list: 0-15
+pid 47115's new affinity list: 5
+pid 47114's current affinity list: 0-15
+pid 47114's new affinity list: 6
+pid 47113's current affinity list: 0-15
+pid 47113's new affinity list: 7
+pid 47112's current affinity list: 0-15
+pid 47112's new affinity list: 8
+pid 47111's current affinity list: 0-15
+pid 47111's new affinity list: 9
+pid 47110's current affinity list: 0-15
+pid 47110's new affinity list: 10
+pid 47109's current affinity list: 0-15
+pid 47109's new affinity list: 11
+pid 47108's current affinity list: 0-15
+pid 47108's new affinity list: 12
+pid 47107's current affinity list: 0-15
+pid 47107's new affinity list: 13
+pid 47106's current affinity list: 0-15
+pid 47106's new affinity list: 14
+pid 47105's current affinity list: 0-15
+pid 47105's new affinity list: 15
+/tmp/slurm-ns51/job03465/slurm_script: line 52: 47103 Killed                  stress -c $CORES --backoff 1000000
+Running stress test with 30% CPU Usage
+stress: info: [47231] dispatching hogs: 16 cpu, 0 io, 0 vm, 0 hdd
+Process 47107 found
+Process 47109 found
+Process 47106 found
+Process 47108 found
+Process 47117 found
+Process 47119 found
+Process 47110 found
+Process 47120 found
+Process 47115 found
+Process 47112 found
+Process 47111 found
+Process 47118 found
+Process 47113 found
+Process 47116 found
+Process 47114 found
+Process 47105 found
+Stress PIDs are: 47248 47247 47246 47245 47244 47243 47242 47241 47240 47239 47238 47237 47236 47235 47234 47233
+pid 47248's current affinity list: 0-15
+pid 47248's new affinity list: 0
+pid 47247's current affinity list: 0-15
+pid 47247's new affinity list: 1
+pid 47246's current affinity list: 0-15
+pid 47246's new affinity list: 2
+pid 47245's current affinity list: 0-15
+pid 47245's new affinity list: 3
+pid 47244's current affinity list: 0-15
+pid 47244's new affinity list: 4
+pid 47243's current affinity list: 0-15
+pid 47243's new affinity list: 5
+pid 47242's current affinity list: 0-15
+pid 47242's new affinity list: 6
+pid 47241's current affinity list: 0-15
+pid 47241's new affinity list: 7
+pid 47240's current affinity list: 0-15
+pid 47240's new affinity list: 8
+pid 47239's current affinity list: 0-15
+pid 47239's new affinity list: 9
+pid 47238's current affinity list: 0-15
+pid 47238's new affinity list: 10
+pid 47237's current affinity list: 0-15
+pid 47237's new affinity list: 11
+pid 47236's current affinity list: 0-15
+pid 47236's new affinity list: 12
+pid 47235's current affinity list: 0-15
+pid 47235's new affinity list: 13
+pid 47234's current affinity list: 0-15
+pid 47234's new affinity list: 14
+pid 47233's current affinity list: 0-15
+pid 47233's new affinity list: 15
+Running stress test with 40% CPU Usage
+stress: info: [47357] dispatching hogs: 16 cpu, 0 io, 0 vm, 0 hdd
+Process 47234 found
+Process 47239 found
+Process 47243 found
+Process 47236 found
+Process 47247 found
+Process 47235 found
+Process 47237 found
+Process 47241 found
+Process 47246 found
+Process 47242 found
+Process 47238 found
+Process 47233 found
+Process 47244 found
+Process 47240 found
+Process 47245 found
+Process 47248 found
+/tmp/slurm-ns51/job03465/slurm_script: line 52: 47231 Killed                  stress -c $CORES --backoff 1000000
+Stress PIDs are: 47374 47373 47372 47371 47370 47369 47368 47367 47366 47365 47364 47363 47362 47361 47360 47359
+pid 47374's current affinity list: 0-15
+pid 47374's new affinity list: 0
+pid 47373's current affinity list: 0-15
+pid 47373's new affinity list: 1
+pid 47372's current affinity list: 0-15
+pid 47372's new affinity list: 2
+pid 47371's current affinity list: 0-15
+pid 47371's new affinity list: 3
+pid 47370's current affinity list: 0-15
+pid 47370's new affinity list: 4
+pid 47369's current affinity list: 0-15
+pid 47369's new affinity list: 5
+pid 47368's current affinity list: 0-15
+pid 47368's new affinity list: 6
+pid 47367's current affinity list: 0-15
+pid 47367's new affinity list: 7
+pid 47366's current affinity list: 0-15
+pid 47366's new affinity list: 8
+pid 47365's current affinity list: 0-15
+pid 47365's new affinity list: 9
+pid 47364's current affinity list: 0-15
+pid 47364's new affinity list: 10
+pid 47363's current affinity list: 0-15
+pid 47363's new affinity list: 11
+pid 47362's current affinity list: 0-15
+pid 47362's new affinity list: 12
+pid 47361's current affinity list: 0-15
+pid 47361's new affinity list: 13
+pid 47360's current affinity list: 0-15
+pid 47360's new affinity list: 14
+pid 47359's current affinity list: 0-15
+pid 47359's new affinity list: 15
+slurmstepd: error: *** JOB 3465 ON ns51 CANCELLED AT 2017-09-28T17:45:39 ***
