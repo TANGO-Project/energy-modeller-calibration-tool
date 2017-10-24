@@ -1,15 +1,16 @@
 #!/bin/bash
 #
-#SBATCH --job-name=RK-Bench-Test
-#SBATCH --output=RKBenchTest1.txt
+#SBATCH --job-name=Bench-Test
+#SBATCH --output=BenchTestOutput.txt
 #
 #SBATCH --ntasks=1
-#SBATCH --time=22:00
+#SBATCH --time=25:00
 #SBATCH --mem-per-cpu=100
 #SBATCH  -N 1
 #SBATCH --profile=Energy,Task 
-#SBATCH --acctg-freq=Energy=1,Task=1 
-#SBATCH -w nd32
+#SBATCH --acctg-freq=Energy=5,Task=5 
+#SBATCH -w ns51
+#SBATCH --exclusive
 
 CORES=16
 
@@ -26,7 +27,8 @@ for CPID in $CPIDS; do
   let "CORE++"
 done
 sleep 120;
-killall -s KILL stress
+#killall -s KILL stress
+pkill -9 stress
 
 INCREMENT=10
 PERCENTAGE=10
@@ -44,6 +46,7 @@ while [ $PERCENTAGE -le 100 ]; do
     let "CORE++"
   done
   sleep 120;
-  killall -s KILL stress
+#  killall -s KILL stress
+  pkill -9 stress
   PERCENTAGE=$((PERCENTAGE + INCREMENT))
 done
