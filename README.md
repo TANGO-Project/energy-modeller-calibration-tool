@@ -43,7 +43,9 @@ The Sonar Cloud reports for this project are available at: https://sonarcloud.io
 
 Its usage is as follows: 
 
+```
 java –jar energy-modeller-standalone-calibration-tool-0.0.1-SNAPSHOT.jar [hostname] [halt-on-calibrated] [benchmark-only] [no-benchmark] [use-watts-up-meter]
+```
 
 [hostname]: This is an non-optional argument that states which host to emulate the Watt meter for. If no hostname is specified the tool will work for all calibrated hosts.
 
