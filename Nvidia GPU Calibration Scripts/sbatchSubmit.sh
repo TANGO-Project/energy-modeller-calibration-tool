@@ -29,5 +29,5 @@ echo "Running iteration:" $CORECOUNT
     ./stress $CORECOUNT 256;
     RUN=$((RUN + INCREMENT));
 done
-stop_gathering.sh
+./stop_gathering.sh
 
