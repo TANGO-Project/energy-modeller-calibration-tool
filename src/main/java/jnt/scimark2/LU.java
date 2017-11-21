@@ -139,12 +139,10 @@ public class LU {
         int M = A.length;
         int N = A[0].length;
 
-        //if ( LU_ == null || LU_.length != M || LU_[0].length != N)
         LU_ = new double[M][N];
 
         insert_copy(LU_, A);
 
-        //if (pivot_.length != M)
         pivot_ = new int[M];
 
         factor(LU_, pivot_);
