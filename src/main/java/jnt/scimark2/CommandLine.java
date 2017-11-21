@@ -44,7 +44,7 @@ public class CommandLine {
             }
 
             if (args.length > current_arg) {
-                benchmarker.setMinimumExperimentTime(Double.valueOf(args[current_arg]).doubleValue());
+                benchmarker.setMinimumExperimentTime(Double.valueOf(args[current_arg]));
             }
         }
 
