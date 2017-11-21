@@ -94,7 +94,7 @@ public class LU {
         int M = A.length;
         int N = A[0].length;
 
-        int remainder = N & 3;		 // N mod 4;
+        int remainder = N & 3;
 
         for (int i = 0; i < M; i++) {
             double Bi[] = B[i];
