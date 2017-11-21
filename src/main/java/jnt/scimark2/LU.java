@@ -255,19 +255,14 @@ public class LU {
     public static void solve(double LU[][], int pivot[], double b[]) {
         int M = LU.length;
         int N = LU[0].length;
-        int ii = 0;
 
         for (int i = 0; i < M; i++) {
             int ip = pivot[i];
             double sum = b[ip];
 
             b[ip] = b[i];
-            if (ii == 0) {
-                for (int j = ii; j < i; j++) {
-                    sum -= LU[i][j] * b[j];
-                }
-            } else if (sum == 0.0) {
-                ii = i;
+            for (int j = 0; j < i; j++) {
+                sum -= LU[i][j] * b[j];
             }
             b[i] = sum;
         }
