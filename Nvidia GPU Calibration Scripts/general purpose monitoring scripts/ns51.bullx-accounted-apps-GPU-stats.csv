@@ -1,0 +1,1 @@
+timestamp, gpu_name, gpu_bus_id, gpu_serial, gpu_uuid, pid, gpu_utilization [%], mem_utilization [%], max_memory_usage [MiB], time [ms]

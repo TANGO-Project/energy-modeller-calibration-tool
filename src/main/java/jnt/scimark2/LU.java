@@ -94,7 +94,7 @@ public class LU {
         int M = A.length;
         int N = A[0].length;
 
-        int remainder = N & 3;		 // N mod 4;
+        int remainder = N & 3;
 
         for (int i = 0; i < M; i++) {
             double Bi[] = B[i];
@@ -139,12 +139,10 @@ public class LU {
         int M = A.length;
         int N = A[0].length;
 
-        //if ( LU_ == null || LU_.length != M || LU_[0].length != N)
         LU_ = new double[M][N];
 
         insert_copy(LU_, A);
 
-        //if (pivot_.length != M)
         pivot_ = new int[M];
 
         factor(LU_, pivot_);
@@ -257,19 +255,14 @@ public class LU {
     public static void solve(double LU[][], int pivot[], double b[]) {
         int M = LU.length;
         int N = LU[0].length;
-        int ii = 0;
 
         for (int i = 0; i < M; i++) {
             int ip = pivot[i];
             double sum = b[ip];
 
             b[ip] = b[i];
-            if (ii == 0) {
-                for (int j = ii; j < i; j++) {
-                    sum -= LU[i][j] * b[j];
-                }
-            } else if (sum == 0.0) {
-                ii = i;
+            for (int j = 0; j < i; j++) {
+                sum -= LU[i][j] * b[j];
             }
             b[i] = sum;
         }

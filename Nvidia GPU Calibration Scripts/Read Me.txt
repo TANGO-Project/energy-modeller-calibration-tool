@@ -1,0 +1,20 @@
+The standalone calibration tool is designed to calibrate the model that is used for physical hosts. These scripts aim to work
+for gathering calibration data that is suitable for the energy modeller.
+
+The first stage is to start the monitoring.
+
+./gather_calibration_data.sh
+
+The second is to apply a load. The parameter to be passed is how many stream multiprocessors are on the gpu.
+
+./gpu-stress.sh <count_of_sm_proccessors>
+
+once the load has finished, the data gathering process can be stopped.
+
+./stop_gathering.sh
+
+Files with the pattern: <Hostname>-<card_name>-<gpu_index>-stats.csv will be produced. Such as: ns51.bullx-GPU-Tesla K20Xm-0-stats.csv 
+
+The file that demonstrates load being applied can be moved into the folder with the energy modeller and renamed.
+
+It should be given the same name as the graphics card (<card_name>.csv)  i.e. "GPU-Tesla K20Xm.csv"

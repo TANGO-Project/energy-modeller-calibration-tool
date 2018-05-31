@@ -46,21 +46,17 @@ public class MeasurementLogger extends GenericLogger<Measurement> {
     @Override
     public void saveToDisk(ResultsStore store, Collection<Measurement> measurements) {
         try {
-            if (!store.getResultsFile().exists() || metricNames.isEmpty()) {
+            if ((!store.getResultsFile().exists() || metricNames.isEmpty()) && (!measurements.isEmpty())) {
                 /**
                  * Write out the header if the file does not exist or is if the
-                 * file is been appended to for the first time. i.e. the headers
+                 * file is being appended to for the first time. i.e. the headers
                  * may be in a different order.
+                 * The list of headers comes from the measurements collection so make sure
+                 * it is also not empty.
                  */
-                for (Measurement measurement : measurements) {
+                    Measurement measurement = (Measurement) (measurements.toArray())[0];
                     metricNames.addAll(measurement.getMetricNameList());
                     writeHeader(store);
-                    /**
-                     * This gets the first item out of the measurements list, so
-                     * the header can be written.
-                     */
-                    break;  
-                }
 
             }
             for (Measurement measurement : measurements) {

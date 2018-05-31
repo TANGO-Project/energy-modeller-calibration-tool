@@ -362,7 +362,7 @@ public class CalibrationRunManager implements ManagedProcessListener {
          * @param endTime The end time of the load, seconds from start of
          * experiment
          */
-        private void setLatestStartAndEndTimes(GregorianCalendar taskStartTime, int startTime, int endTime) {
+        private void setLatestStartAndEndTimes(GregorianCalendar taskStartTime, long startTime, long endTime) {
             //Calculated the start time
             latestMesurementStartTime = (GregorianCalendar) taskStartTime.clone();
             latestMesurementStartTime.setTimeInMillis(latestMesurementStartTime.getTimeInMillis() + TimeUnit.SECONDS.toMillis(gapBeforeMeasurements));
