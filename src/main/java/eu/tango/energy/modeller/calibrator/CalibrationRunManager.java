@@ -93,11 +93,11 @@ public class CalibrationRunManager implements ManagedProcessListener {
         if (settings.isChanged()) {
             settings.save("calibration_settings.properties");
         }
-        writeOutDefaults(appsToExecute);
         this.sender = closeable;
         this.datasource = datasource;
         this.database = database;
         this.host = host;
+        writeOutDefaults(appsToExecute);
         if (logging) {
             logger = new ManagedProcessLogger(new File(workingDir + "AppLog.csv"), false);
             Thread loggerThread = new Thread(logger);
@@ -112,7 +112,7 @@ public class CalibrationRunManager implements ManagedProcessListener {
         getApplicationListFromFile(appsToExecute);
         new Thread(actioner).start();
     }
-
+    
     /**
      * This performs a check to see if the settings file is empty or not. It
      * will write out a blank file if the file is not present and the attempt to
@@ -122,6 +122,7 @@ public class CalibrationRunManager implements ManagedProcessListener {
      * @return If the defaults settings have been written out to disk or not.
      */
     private boolean writeOutDefaults(ResultsStore appsList) {
+        String os = System.getProperty("os.name").toLowerCase();
         boolean answer = false;
         if (!new File(workingDir + TO_EXECUTE_SETTINGS_FILE).exists()) {
             appsList.add("Time From Start");
@@ -131,6 +132,24 @@ public class CalibrationRunManager implements ManagedProcessListener {
             appsList.append("Working Directory");
             appsList.append("Output To Screen");
             appsList.append("Time of Task End");
+            String pwd = System.getProperty("user.dir");
+            if (os.contains("win")) {
+                appsList.add(String.format("0,ping 192.0.2.2 -n 1 -w 50000 > nul,%s\\test.out,%s\\error.out,%s\\,TRUE,50", pwd, pwd, pwd));
+                appsList.add(String.format("60,%s\\WindowsStress.exe 10 all 60,%s\\test.out,%s\\error.out,%s\\,TRUE,120", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("160,%s\\WindowsStress.exe 20 all 60,%s\\test1.out,%s\\error1.out,%s\\,TRUE,220", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("260,%s\\WindowsStress.exe 40 all 60,%s\\test2.out,%s\\error2.out,%s\\,TRUE,320", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("360,%s\\WindowsStress.exe 60 all 60,%s\\test3.out,%s\\error3.out,%s\\,TRUE,420", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("460,%s\\WindowsStress.exe 80 all 60,%s\\test4.out,%s\\error4.out,%s\\,TRUE,520", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("560,%s\\WindowsStress.exe 100 all 60,%s\\test5.out,%s\\error5.out,%s\\,TRUE,620", pwd, pwd, pwd, pwd));  
+            } else {
+                appsList.add(String.format("0,sleep 50,%s/test.out,%s/error.out,%s,TRUE,50", pwd, pwd, pwd));
+                appsList.add(String.format("60,%s/run-stress-point.sh 10 4 60,%s/test.out,%s/error.out,%s/,TRUE,120", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("160,%s/run-stress-point.sh 20 4 60,%s/test1.out,%s/error1.out,%s/,TRUE,220", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("260,%s/run-stress-point.sh 40 4 60,%s/test2.out,%s/error2.out,%s/,TRUE,320", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("360,%s/run-stress-point.sh 60 4 60,%s/test3.out,%s/error3.out,%s/,TRUE,420", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("460,%s/run-stress-point.sh 80 4 60,%s/test4.out,%s/error4.out,%s/,TRUE,520", pwd, pwd, pwd, pwd));
+                appsList.add(String.format("560,%s/run-stress-point.sh 100 4 60,%s/test5.out,%s/error5.out,%s/,TRUE,620", pwd, pwd, pwd, pwd));
+            }
             appsList.save();
             answer = true;
             if (logging) {
@@ -139,7 +158,9 @@ public class CalibrationRunManager implements ManagedProcessListener {
                     logger.stop();
                 }
             }
-            sender.finished();
+            if (sender != null) {
+                sender.finished();
+            }
         }
         return answer;
     }
@@ -303,10 +324,25 @@ public class CalibrationRunManager implements ManagedProcessListener {
             if (database != null && !measurements.isEmpty()) {
                 database.setHostCalibrationData(host);
             }
+            System.out.println(getCodeProfilerHostCalibrationString(calibrationData));
         } else {
             System.out.println("This was a simulated run! No data has been saved");
         }
         return calibrationData;
+    }
+    
+    /**
+     * This prints out the host calibration data string needed to configure the 
+     * Code profiler.
+     * @param data The calibration data
+     * @return The string formatted ready for the code profiler plug-in.
+     */
+    private String getCodeProfilerHostCalibrationString(ArrayList<HostEnergyCalibrationData> data) {
+        String answer = "";
+        for (HostEnergyCalibrationData measurement : data) {
+            answer = answer + (!answer.isEmpty() ? "," : "") + measurement.getCpuUsage() + "," + measurement.getWattsUsed();
+        }
+        return answer;
     }
 
     /**

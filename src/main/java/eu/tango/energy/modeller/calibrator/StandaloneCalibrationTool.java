@@ -42,7 +42,7 @@ public class StandaloneCalibrationTool implements CompletedListener {
     private Host host;
     private boolean stopOnCalibratedHosts = false;
     private HostDataSource source;
-    private final DatabaseConnector database = new DefaultDatabaseConnector();
+    private final DatabaseConnector database;
     private CalibrationRunManager runManager;
     private static final String DEFAULT_DATA_SOURCE_PACKAGE = "eu.tango.energymodeller.datasourceclient";
 
@@ -54,6 +54,7 @@ public class StandaloneCalibrationTool implements CompletedListener {
     public StandaloneCalibrationTool(String hostname) {
         source = new ZabbixDirectDbDataSourceAdaptor();
         host = source.getHostByName(hostname);
+        database = new DefaultDatabaseConnector();
         host = database.getHostCalibrationData(host);
     }
 
@@ -67,6 +68,7 @@ public class StandaloneCalibrationTool implements CompletedListener {
     public StandaloneCalibrationTool(String hostname, String datasource) {
         setDataSource(datasource);
         host = source.getHostByName(hostname);
+        database = new DefaultDatabaseConnector();        
         host = database.getHostCalibrationData(host);
     }
 
@@ -82,6 +84,10 @@ public class StandaloneCalibrationTool implements CompletedListener {
      */
     public static void main(String[] args) {
         ArrayList<String> strArgs = new ArrayList<>(Arrays.asList(args));
+        if (strArgs.contains("profiler")) {
+            CodeProfilerCalibrationTool.main(args);
+            return;
+        }
         StandaloneCalibrationTool instance;
         if (args.length != 0) {
             if (strArgs.contains("use-watts-up-meter")) {

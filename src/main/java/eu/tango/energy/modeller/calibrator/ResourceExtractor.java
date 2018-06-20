@@ -20,8 +20,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * The aim of this class is to extract resources that are required for running,
@@ -31,14 +29,32 @@ import java.util.logging.Logger;
  */
 public class ResourceExtractor {
 
+    private static String OS = System.getProperty("os.name").toLowerCase();
+    
     public static void extractSigar() {
         Properties props = System.getProperties();
         props.setProperty("java.library.path", ".");
-        extractFile("libsigar-amd64-linux.so");
-        extractFile("libsigar-ia64-linux.so");
-        extractFile("libsigar-amd64-solaris.so");
-        extractFile("libsigar-universal64-macosx.dylib");
-        extractFile("libsigar-x86-linux.so");
+        if (OS.isEmpty()) {
+            OS = "nixmacwin"; //thus extracts all resources
+        }
+        //Extracts Linux based resources
+        if (OS.contains("nix") || OS.contains("nux") || OS.contains("aix")) {
+            extractFile("libsigar-amd64-linux.so");
+            extractFile("libsigar-ia64-linux.so");
+            extractFile("libsigar-amd64-solaris.so");
+        }
+        //Extracts Mac OS based resources on detecting correct environment
+        if (OS.contains("mac")) {
+            extractFile("libsigar-universal64-macosx.dylib");
+            extractFile("libsigar-x86-linux.so");
+        }
+        //Extracts Windows based resources on detecting correct environment
+        if (OS.contains("win")) {
+            extractFile("sigar-amd64-winnt.dll");
+            extractFile("sigar-amd64-winnt.lib");
+            extractFile("sigar-x86-winnt.dll");
+            extractFile("sigar-x86-winnt.lib");
+        }
     }
 
     /**
