@@ -22,10 +22,21 @@ void add(int n, float *x, float *y)
 
 int main(int argc, char const *argv[])
 {
+
+  // Run kernel on 1M elements on the GPU
+  int blockSize = atoi(argv[2]);
+  int numBlocks = atoi(argv[1]);
+  int targetGPU = 0; 
+	
+  if (argc > 3) {
+    targetGPU = atoi(argv[3]);
+  }
+
   int N = 1<<20;
   float *x, *y;
 
-  // Allocate Unified Memory – accessible from CPU or GPU
+  cudaSetDevice(targetGPU);  
+  // Allocate Unified Memory - accessible from CPU or GPU
   cudaMallocManaged(&x, N*sizeof(float));
   cudaMallocManaged(&y, N*sizeof(float));
 
@@ -34,10 +45,7 @@ int main(int argc, char const *argv[])
     x[i] = 1.0f;
     y[i] = 2.0f;
   }
-
-  // Run kernel on 1M elements on the GPU
-  int blockSize = atoi(argv[2]);
-  int numBlocks = atoi(argv[1]);
+ 
   printf("The block size is: %d and the number of blocks is: %d and the amount of work is: %d\n\n",blockSize ,numBlocks , N);
   add<<<numBlocks, blockSize>>>(N, x, y);
 

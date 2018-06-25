@@ -11,7 +11,7 @@
 #SBATCH --acctg-freq=Energy=5,Task=5 
 #SBATCH -w ns50
 #SBATCH --exclusive
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:2
 
 
 CORECOUNT=24
@@ -26,7 +26,8 @@ RUN=1
 MAXLOOPCOUNT=20
 while [ $RUN -le $MAXLOOPCOUNT ]; do
 echo "Running iteration:" $CORECOUNT
-    ./stress $CORECOUNT 256;
+    ./stress $CORECOUNT 256 0;
+    ./stress $CORECOUNT 256 1;	
     RUN=$((RUN + INCREMENT));
 done
 ./stop_gathering.sh
