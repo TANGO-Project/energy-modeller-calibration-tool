@@ -16,8 +16,8 @@ These scripts should be made executable and then executed on the physical host w
   
 ## Usage Guide
 
-he standalone calibration tool is designed to calibrate the model that is used for physical hosts. These scripts aim to work
-for gathering calibration data that is suitable for the energy modeller.
+The standalone calibration tool is designed to calibrate the model that is used for physical hosts. These scripts aim to work
+for gathering calibration data that is suitable for the energy modeller. These scripts may be launched using sbatch sbatchSubmit.sh or more directly as described below:
 
 The first stage is to start the monitoring.
 
@@ -39,7 +39,7 @@ once the load has finished, the data gathering process can be stopped.
 
 Files with the pattern: <Hostname>-<card_name>-<gpu_index>-stats.csv will be produced. Such as: ns51.bullx-GPU-Tesla K20Xm-0-stats.csv 
 
-The file that demonstrates load being applied can be moved into the folder with the energy modeller and renamed.
+The file generated shows load being applied, it can be moved into the folder with the energy modeller and renamed.
 
 It should be given the same name as the graphics card (<card_name>.csv) i.e. "GPU-Tesla K20Xm.csv"
 
